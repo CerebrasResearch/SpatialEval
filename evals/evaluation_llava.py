@@ -209,8 +209,9 @@ def evaluate_model_accuracy(model_output_path: str, eval_summary_path: str, mode
                 logging.info(f"-- choices: {choices}")
 
                 # Compare model answer with ground truth
-                model_answer = str(answer_letter).lower()
+                model_answer = answer_letter
                 if model_answer is not None:
+                    model_answer = str(model_answer).lower()
                     # Note: only considers option, not the text after the choice
                     eval_result = int(ref_ans == model_answer) 
                 else:
