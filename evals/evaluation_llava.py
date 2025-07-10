@@ -273,14 +273,7 @@ def main(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Evaluate model accuracy for open source models.')
-    parser.add_argument('--mode', choices=['tqa', 'vqa', 'vtqa'], default='tqa')
-    parser.add_argument('--output_folder', type=str, default='outputs/', help='Path to the directory containing model outputs.')
-    parser.add_argument('--dataset_id', type=str, default='MilaWang/SpatialEval', help='Dataset identifier for Hugging Face.')
-    parser.add_argument('--eval_summary_dir', type=str, default='eval_summary', help='Path to the directory to save evaluation summaries.')
-    parser.add_argument('--task', type=str, default='spatialgrid', choices=['all', 'spatialmap', 'mazenav', 'spatialgrid', 'spatialreal'], help='Task to evaluate.')
-    args = parser.parse_args()
-    
+    args = parse_arguments()
     args.output_folder = os.path.join(args.output_folder, args.dataset_id.replace("/", "__"))
     args.output_dir = os.path.join(args.output_folder, args.mode)
     args.eval_summary_dir = os.path.join(args.eval_summary_dir, args.mode)
