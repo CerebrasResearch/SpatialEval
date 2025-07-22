@@ -138,7 +138,7 @@ def main(args, model, processor, dataset, output_file_path):
                         prompt = format_bunny_vqa_prompt_hf(item['text'], args)
                 elif "qwen" or "cog" or "instructblip" or "llava" in args.model_path.lower() or "merged" in args.model_path.lower():
                     if args.w_reason:
-                        prompt = f"{item['text']}\nFirst, provide a concise answer in one sentence. Then, elaborate on the reasoning behind your answer in a detailed, step-by-step explanation."
+                        prompt = f"{item['text']}\nFirst, provide a single letter response that selects the option which best answers the question. Then, elaborate on the reasoning behind your answer in a detailed, step-by-step explanation. Please strictly format the final response as follows -- Answer: <A single letter option that best answers the question>.\nReason: <reasoning behind the answer>\nRead the question again:\n{item['text']}"
                     elif args.completion:
                         prompt = f"{item['text']}\nAnswer:"
                     else:
